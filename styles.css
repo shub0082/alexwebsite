@@ -849,60 +849,63 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: #1e293b;
+        background: #1e293b;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
-        z-index: 9999;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+        gap: 0;
+        z-index: 99999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     .nav-menu.active {
-        display: flex;
-        opacity: 1;
-        visibility: visible;
+        transform: translateX(0);
     }
 
     .nav-menu li {
-        list-style: none;
-        width: 100%;
-        text-align: center;
+        width: 80%;
+        margin: 0;
+        padding: 0;
     }
 
-    .nav-link {
+    .nav-menu .nav-link {
         display: block;
-        padding: 1.5rem 2rem;
-        color: #e2e8f0;
+        padding: 2rem;
+        color: #ffffff;
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 600;
-        width: 100%;
-        border: none;
+        text-align: center;
         border-bottom: 1px solid #334155;
-        transition: all 0.3s ease;
+        background: transparent;
+        width: 100%;
+        transition: background-color 0.3s ease;
     }
 
-    .nav-link:hover {
+    .nav-menu .nav-link:hover,
+    .nav-menu .nav-link.active {
         background-color: #334155;
         color: #c0c0c0;
     }
 
-    .nav-link:last-child {
+    .nav-menu li:last-child .nav-link {
         border-bottom: none;
     }
 
     .hamburger {
         display: flex;
-        z-index: 1001;
+        z-index: 999999;
+        position: relative;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -920,6 +923,13 @@ body {
     /* Prevent body scroll when mobile menu is open */
     body.menu-open {
         overflow: hidden;
+    }
+
+    /* Hide main content when mobile menu is open */
+    body.menu-open .hero,
+    body.menu-open .about,
+    body.menu-open .footer {
+        display: none;
     }
 
     .hero-content h1 {
