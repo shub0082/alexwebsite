@@ -924,31 +924,45 @@ body {
 
     /* Prevent body scroll when mobile menu is open */
     body.menu-open {
-        overflow: hidden;
+        overflow: hidden !important;
+        background: #1e293b !important;
     }
 
-    /* Hide ALL main content when mobile menu is open */
-    body.menu-open > *:not(nav):not(.navbar) {
-        display: none !important;
+    /* BULLETPROOF: Hide ALL content when mobile menu is open */
+    body.menu-open * {
+        visibility: hidden !important;
     }
 
-    /* Ensure navbar stays visible but only show hamburger and menu */
-    body.menu-open .nav-brand {
-        display: none !important;
+    /* Show only what we need for mobile menu */
+    body.menu-open .navbar,
+    body.menu-open .hamburger,
+    body.menu-open .hamburger *,
+    body.menu-open .nav-menu,
+    body.menu-open .nav-menu *,
+    body.menu-open .nav-menu li,
+    body.menu-open .nav-menu .nav-link {
+        visibility: visible !important;
     }
 
-    /* Ensure mobile menu covers everything */
+    /* Ensure mobile menu covers everything with solid background */
     body.menu-open .nav-menu {
         background: #1e293b !important;
         box-shadow: none;
+        border: none;
     }
 
-    /* Keep hamburger visible */
+    /* Position hamburger as close button */
     body.menu-open .hamburger {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 9999999;
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        z-index: 99999999 !important;
+        visibility: visible !important;
+    }
+
+    /* Hide brand logo when menu is open */
+    body.menu-open .nav-brand {
+        visibility: hidden !important;
     }
 
     .hero-content h1 {
