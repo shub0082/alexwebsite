@@ -854,59 +854,55 @@ body {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: #1e293b !important;
-        display: flex;
+        background: #1e293b;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0;
+        gap: 2rem;
         z-index: 999999;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
         list-style: none;
         margin: 0;
-        padding: 0;
-        opacity: 1;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+        padding: 2rem;
     }
 
     .nav-menu.active {
-        transform: translateX(0);
+        display: flex;
     }
 
     .nav-menu li {
-        width: 80%;
+        width: 100%;
+        max-width: 300px;
         margin: 0;
         padding: 0;
     }
 
     .nav-menu .nav-link {
         display: block;
-        padding: 2rem;
+        padding: 1.5rem 2rem;
         color: #ffffff;
         text-decoration: none;
         font-size: 1.4rem;
         font-weight: 600;
         text-align: center;
-        border-bottom: 1px solid #334155;
-        background: transparent;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
         width: 100%;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     .nav-menu .nav-link:hover,
     .nav-menu .nav-link.active {
-        background-color: #334155;
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #c0c0c0;
         color: #c0c0c0;
-    }
-
-    .nav-menu li:last-child .nav-link {
-        border-bottom: none;
+        transform: scale(1.05);
     }
 
     .hamburger {
         display: flex;
-        z-index: 999999;
+        z-index: 9999999;
         position: relative;
     }
 
@@ -922,47 +918,17 @@ body {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    /* Prevent body scroll when mobile menu is open */
+    /* Simple body scroll prevention */
     body.menu-open {
-        overflow: hidden !important;
-        background: #1e293b !important;
+        overflow: hidden;
     }
 
-    /* BULLETPROOF: Hide ALL content when mobile menu is open */
-    body.menu-open * {
-        visibility: hidden !important;
-    }
-
-    /* Show only what we need for mobile menu */
-    body.menu-open .navbar,
-    body.menu-open .hamburger,
-    body.menu-open .hamburger *,
-    body.menu-open .nav-menu,
-    body.menu-open .nav-menu *,
-    body.menu-open .nav-menu li,
-    body.menu-open .nav-menu .nav-link {
-        visibility: visible !important;
-    }
-
-    /* Ensure mobile menu covers everything with solid background */
-    body.menu-open .nav-menu {
-        background: #1e293b !important;
-        box-shadow: none;
-        border: none;
-    }
-
-    /* Position hamburger as close button */
-    body.menu-open .hamburger {
-        position: fixed !important;
-        top: 20px !important;
-        right: 20px !important;
-        z-index: 99999999 !important;
-        visibility: visible !important;
-    }
-
-    /* Hide brand logo when menu is open */
-    body.menu-open .nav-brand {
-        visibility: hidden !important;
+    /* Position hamburger as close button when active */
+    .hamburger.active {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 99999999;
     }
 
     .hero-content h1 {
