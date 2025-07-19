@@ -854,18 +854,20 @@ body {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: #1e293b;
+        background: #1e293b !important;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 0;
-        z-index: 99999;
+        z-index: 999999;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         list-style: none;
         margin: 0;
         padding: 0;
+        opacity: 1;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
     }
 
     .nav-menu.active {
@@ -925,11 +927,28 @@ body {
         overflow: hidden;
     }
 
-    /* Hide main content when mobile menu is open */
-    body.menu-open .hero,
-    body.menu-open .about,
-    body.menu-open .footer {
-        display: none;
+    /* Hide ALL main content when mobile menu is open */
+    body.menu-open > *:not(nav):not(.navbar) {
+        display: none !important;
+    }
+
+    /* Ensure navbar stays visible but only show hamburger and menu */
+    body.menu-open .nav-brand {
+        display: none !important;
+    }
+
+    /* Ensure mobile menu covers everything */
+    body.menu-open .nav-menu {
+        background: #1e293b !important;
+        box-shadow: none;
+    }
+
+    /* Keep hamburger visible */
+    body.menu-open .hamburger {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999999;
     }
 
     .hero-content h1 {
